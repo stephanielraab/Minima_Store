@@ -7,6 +7,7 @@ type Params = {
   slug: string;
 };
 
+
 export async function generateStaticParams() {
   return products.map((product) => ({
     slug: product.slug,
@@ -21,8 +22,9 @@ export function generateMetadata({ params }: { params: Params }) {
   };
 }
 
-export default function ProductPage({ params }: { params: Params }) {
-  const product = products.find((p) => p.slug === params.slug);
+export default async function ProductPage({ params }: { params: Params | Promise<Params> }) {
+  const { slug } = await params;
+  const product = products.find((p) => p.slug === slug);
 
   if (!product) {
     notFound();
