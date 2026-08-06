@@ -1,0 +1,9 @@
+{
+  "/page": "app/page.js",
+  "/rastreio/page": "app/rastreio/page.js",
+  "/guia-tamanhos/page": "app/guia-tamanhos/page.js",
+  "/contato/page": "app/contato/page.js",
+  "/favoritos/page": "app/favoritos/page.js",
+  "/sale/page": "app/sale/page.js",
+  "/colecoes/page": "app/colecoes/page.js"
+}
