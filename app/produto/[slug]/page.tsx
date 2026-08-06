@@ -14,16 +14,28 @@ export async function generateStaticParams() {
   }));
 }
 
-export function generateMetadata({ params }: { params: Params }) {
-  const product = products.find((p) => p.slug === params.slug);
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<Params>;
+}) {
+  const { slug } = await params;
+
+  const product = products.find((p) => p.slug === slug);
+
   return {
     title: product ? `${product.name} — MÍNIMA` : "Produto não encontrado",
     description: product?.name,
   };
 }
 
-export default async function ProductPage({ params }: { params: Params | Promise<Params> }) {
+export default async function ProductPage({
+  params,
+}: {
+  params: Promise<Params>;
+}) {
   const { slug } = await params;
+
   const product = products.find((p) => p.slug === slug);
 
   if (!product) {
@@ -33,8 +45,7 @@ export default async function ProductPage({ params }: { params: Params | Promise
   const discount =
     product.originalPrice !== null
       ? Math.round(
-          ((product.originalPrice - product.price) / product.originalPrice) *
-            100
+          ((product.originalPrice - product.price) / product.originalPrice) * 100
         )
       : null;
 

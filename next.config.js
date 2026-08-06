@@ -1,6 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: "export",
+  trailingSlash: true,
+
+  basePath: "/Minima_Store",
+  assetPrefix: "/Minima_Store/",
+
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",
