@@ -5,8 +5,7 @@ import "./globals.css";
 import { Header } from "@/src/components/layout/header";
 import { Footer } from "@/src/components/layout/footer";
 import { CartDrawer } from "@/src/components/layout/cart-drawer";
-import { CartProvider } from "@/src/context/cart-context";
-import { WishlistProvider } from "@/src/context/wishlist-context";
+import { Providers } from "./providers";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -36,16 +35,14 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={`${cormorant.variable} ${dmSans.variable} font-sans`}>
-        <CartProvider>
-          <WishlistProvider>
-            <Header />
-            <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              {children}
-            </main>
-            <Footer />
-            <CartDrawer />
-          </WishlistProvider>
-        </CartProvider>
+        <Providers>
+          <Header />
+          <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {children}
+          </main>
+          <Footer />
+          <CartDrawer />
+        </Providers>
       </body>
     </html>
   );

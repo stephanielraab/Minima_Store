@@ -1,10 +1,13 @@
 /** @type {import('next').NextConfig} */
+
+const isProd = process.env.NODE_ENV === "production";
+
 const nextConfig = {
   output: "export",
   trailingSlash: true,
 
-  basePath: "/Minima_Store",
-  assetPrefix: "/Minima_Store/",
+  basePath: isProd ? "/Minima_Store" : "",
+  assetPrefix: isProd ? "/Minima_Store/" : "",
 
   images: {
     unoptimized: true,
