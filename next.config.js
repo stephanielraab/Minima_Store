@@ -1,13 +1,13 @@
 /** @type {import('next').NextConfig} */
 
-const isProd = process.env.NODE_ENV === "production";
+const isGithubPages = process.env.DEPLOY_TARGET === "github";
 
 const nextConfig = {
   output: "export",
   trailingSlash: true,
 
-  basePath: isProd ? "/Minima_Store" : "",
-  assetPrefix: isProd ? "/Minima_Store/" : "",
+  basePath: isGithubPages ? "/Minima_Store" : "",
+  assetPrefix: isGithubPages ? "/Minima_Store/" : "",
 
   images: {
     unoptimized: true,
