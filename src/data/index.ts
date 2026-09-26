@@ -7,6 +7,7 @@ export type Banner = {
   bg: string;
 };
 
+
 export type Product = {
   id: string;
   name: string;
