@@ -2,6 +2,7 @@ import { products } from "@/src/data";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ProductForm } from "@/src/components/product/product-form";
 
 type Params = {
   slug: string;
@@ -124,30 +125,8 @@ export default async function ProductPage({
             </ul>
           </div>
 
-          {/* Size selector */}
-          <div className="mb-8">
-            <label className="font-sans text-sm font-medium text-stone-900 block mb-3">
-              Tamanho
-            </label>
-            <div className="flex gap-2 flex-wrap">
-              {["XS", "S", "M", "L", "XL", "XXL"].map((size) => (
-                <button
-                  key={size}
-                  className="border border-stone-300 w-10 h-10 flex items-center justify-center text-sm hover:border-stone-900 hover:bg-stone-900 hover:text-white transition-colors font-sans"
-                >
-                  {size}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Add to cart */}
-          <button className="w-full bg-stone-900 text-white py-4 tracking-widest uppercase text-sm font-sans mb-3 hover:bg-stone-800 transition-colors">
-            Adicionar ao Carrinho
-          </button>
-          <button className="w-full border border-stone-900 text-stone-900 py-4 tracking-widest uppercase text-sm font-sans hover:bg-stone-900 hover:text-white transition-colors">
-            ♡ Adicionar à Lista
-          </button>
+          {/* Interactive form (size selection + add to cart buttons) */}
+          <ProductForm product={product} />
 
           {/* Benefits */}
           <div className="border-t border-[#E4E2DE] mt-8 pt-8">

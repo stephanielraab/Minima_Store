@@ -2,11 +2,18 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useCart } from "@/src/context/cart-context";
 
 export function CartDrawer() {
   const { items, isOpen, closeCart, updateQuantity, removeFromCart, totalPrice } =
     useCart();
+  const router = useRouter();
+
+  function handleCheckout() {
+    closeCart();
+    router.push("/checkout");
+  }
 
   return (
     <>
@@ -142,7 +149,10 @@ export function CartDrawer() {
                 })}
               </span>
             </div>
-            <button className="w-full bg-stone-900 text-white text-[11px] tracking-[0.3em] uppercase font-sans py-4 hover:bg-stone-800 transition-colors">
+            <button
+              onClick={handleCheckout}
+              className="w-full bg-stone-900 text-white text-[11px] tracking-[0.3em] uppercase font-sans py-4 hover:bg-stone-800 transition-colors"
+            >
               Finalizar Compra
             </button>
           </div>
